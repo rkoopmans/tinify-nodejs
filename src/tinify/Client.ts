@@ -2,13 +2,14 @@ import {IncomingMessage, IncomingHttpHeaders} from "http"
 import * as https from "https"
 import * as url from "url"
 import * as fs from "fs"
+import * as path from "path"
 import * as proxyAgent from "proxying-agent"
 
 import {version} from "../../package.json"
 import tinify from "../tinify"
 
 const boundaries = /-----BEGIN CERTIFICATE-----[\s\S]+?-----END CERTIFICATE-----\n/g
-const data = fs.readFileSync(`${__dirname}/../data/cacert.pem`).toString()
+const data = fs.readFileSync(path.join(`${__dirname}/../data/cacert.pem`)).toString()
 
 interface ClientOptions {
   ca: RegExpMatchArray
