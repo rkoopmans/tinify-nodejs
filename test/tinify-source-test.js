@@ -62,7 +62,7 @@ describe("Source", function() {
 
       it("should return source with data", function() {
         nock("https://api.tinify.com")
-          .get("/some/location")
+          .post("/some/location")
           .reply(200, "compressed file")
 
         const data = tinify.Source.fromFile(dummyFile).toBuffer()
@@ -86,7 +86,7 @@ describe("Source", function() {
 
       it("should return source with data", function() {
         nock("https://api.tinify.com")
-          .get("/some/location")
+          .post("/some/location")
           .reply(200, "compressed file")
 
         const data = tinify.Source.fromBuffer("png file").toBuffer()
@@ -112,7 +112,7 @@ describe("Source", function() {
           .reply(201, {}, {location: "https://api.tinify.com/some/location"})
 
         nock("https://api.tinify.com")
-          .get("/some/location")
+          .post("/some/location")
           .reply(200, "compressed file")
 
         const data = tinify.Source.fromUrl("http://example.com/test.jpg").toBuffer()
@@ -139,7 +139,7 @@ describe("Source", function() {
           .reply(201, {}, {location: "https://api.tinify.com/some/location"})
 
         nock("https://api.tinify.com")
-          .get("/some/location")
+          .post("/some/location")
           .reply(200, "compressed file")
       })
 
@@ -156,7 +156,7 @@ describe("Source", function() {
           .reply(201, {}, {location: "https://api.tinify.com/some/location"})
 
         nock("https://api.tinify.com")
-          .get("/some/location", '{"preserve":["copyright","location"]}')
+          .post("/some/location", '{"preserve":["copyright","location"]}')
           .reply(200, "copyrighted file")
       })
 
@@ -181,7 +181,7 @@ describe("Source", function() {
 
       it("should include other options if set", function() {
         nock("https://api.tinify.com")
-          .get("/some/location", '{"preserve":["copyright","location"],"resize":{"width":400}}')
+          .post("/some/location", '{"preserve":["copyright","location"],"resize":{"width":400}}')
           .reply(200, "copyrighted resized file")
 
         const data = tinify.Source.fromBuffer("png file").resize({width: 400}).preserve("copyright", "location").toBuffer()
@@ -198,7 +198,7 @@ describe("Source", function() {
           .reply(201, {}, {location: "https://api.tinify.com/some/location"})
 
         nock("https://api.tinify.com")
-          .get("/some/location", '{"resize":{"width":400}}')
+          .post("/some/location", '{"resize":{"width":400}}')
           .reply(200, "small file")
       })
 
@@ -257,7 +257,7 @@ describe("Source", function() {
           .reply(201, {}, {location: "https://api.tinify.com/some/location"})
 
         nock("https://api.tinify.com")
-          .get("/some/location")
+          .post("/some/location")
           .reply(200, "compressed file")
       })
 
@@ -276,7 +276,7 @@ describe("Source", function() {
           .reply(201, {}, {location: "https://api.tinify.com/some/location"})
 
         nock("https://api.tinify.com")
-          .get("/some/location")
+          .post("/some/location")
           .reply(200, "compressed file")
       })
 

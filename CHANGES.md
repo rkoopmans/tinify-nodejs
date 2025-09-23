@@ -1,5 +1,7 @@
-## 1.8.1
+## 1.8.2
+* Removed the `GET` with body HTTP call that was being made when obtaining the results of a compression and transforming at the same time. Replaced with `POST` in order to prepare for deprecation of `GET` with body interface from API.
 
+## 1.8.1
 * Set minimum node engine to v14 in package.json
 * Update examples in README
 * Test the code on node 24

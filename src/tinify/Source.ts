@@ -77,7 +77,11 @@ export default class Source {
   result(): Result {
     const commands = this._commands
     const response = this._url.then(url => {
-      return tinify.client.request("get", url, commands)
+      if(Object.keys(commands).length === 0){
+        return tinify.client.request("get", url)
+      } else {
+        return tinify.client.request("post", url, commands)
+      }
     })
 
     return new tinify.Result(
