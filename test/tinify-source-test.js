@@ -62,7 +62,7 @@ describe("Source", function() {
 
       it("should return source with data", function() {
         nock("https://api.tinify.com")
-          .post("/some/location")
+          .get("/some/location")
           .reply(200, "compressed file")
 
         const data = tinify.Source.fromFile(dummyFile).toBuffer()
@@ -86,7 +86,7 @@ describe("Source", function() {
 
       it("should return source with data", function() {
         nock("https://api.tinify.com")
-          .post("/some/location")
+          .get("/some/location")
           .reply(200, "compressed file")
 
         const data = tinify.Source.fromBuffer("png file").toBuffer()
@@ -112,7 +112,7 @@ describe("Source", function() {
           .reply(201, {}, {location: "https://api.tinify.com/some/location"})
 
         nock("https://api.tinify.com")
-          .post("/some/location")
+          .get("/some/location")
           .reply(200, "compressed file")
 
         const data = tinify.Source.fromUrl("http://example.com/test.jpg").toBuffer()
@@ -139,7 +139,7 @@ describe("Source", function() {
           .reply(201, {}, {location: "https://api.tinify.com/some/location"})
 
         nock("https://api.tinify.com")
-          .post("/some/location")
+          .get("/some/location")
           .reply(200, "compressed file")
       })
 
@@ -257,7 +257,7 @@ describe("Source", function() {
           .reply(201, {}, {location: "https://api.tinify.com/some/location"})
 
         nock("https://api.tinify.com")
-          .post("/some/location")
+          .get("/some/location")
           .reply(200, "compressed file")
       })
 
@@ -276,7 +276,7 @@ describe("Source", function() {
           .reply(201, {}, {location: "https://api.tinify.com/some/location"})
 
         nock("https://api.tinify.com")
-          .post("/some/location")
+          .get("/some/location")
           .reply(200, "compressed file")
       })
 

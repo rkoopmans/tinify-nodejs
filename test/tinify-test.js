@@ -192,7 +192,7 @@ describe("tinify", function() {
         .reply(201, {}, {Location: "https://api.tinify.com/some/location"})
 
       nock("https://api.tinify.com")
-        .post("/some/location")
+        .get("/some/location")
         .reply(200, "compressed file")
     })
 
@@ -215,7 +215,7 @@ describe("tinify", function() {
         .reply(201, {}, {Location: "https://api.tinify.com/some/location"})
 
       nock("https://api.tinify.com")
-        .post("/some/location")
+        .get("/some/location")
         .reply(200, "compressed file")
     })
 
@@ -238,7 +238,7 @@ describe("tinify", function() {
         .reply(201, {}, {Location: "https://api.tinify.com/some/location"})
 
       nock("https://api.tinify.com")
-        .post("/some/location")
+        .get("/some/location")
         .reply(200, "compressed file")
     })
 
