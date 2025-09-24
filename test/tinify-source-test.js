@@ -156,7 +156,7 @@ describe("Source", function() {
           .reply(201, {}, {location: "https://api.tinify.com/some/location"})
 
         nock("https://api.tinify.com")
-          .get("/some/location", '{"preserve":["copyright","location"]}')
+          .post("/some/location", '{"preserve":["copyright","location"]}')
           .reply(200, "copyrighted file")
       })
 
@@ -181,7 +181,7 @@ describe("Source", function() {
 
       it("should include other options if set", function() {
         nock("https://api.tinify.com")
-          .get("/some/location", '{"preserve":["copyright","location"],"resize":{"width":400}}')
+          .post("/some/location", '{"preserve":["copyright","location"],"resize":{"width":400}}')
           .reply(200, "copyrighted resized file")
 
         const data = tinify.Source.fromBuffer("png file").resize({width: 400}).preserve("copyright", "location").toBuffer()
@@ -198,7 +198,7 @@ describe("Source", function() {
           .reply(201, {}, {location: "https://api.tinify.com/some/location"})
 
         nock("https://api.tinify.com")
-          .get("/some/location", '{"resize":{"width":400}}')
+          .post("/some/location", '{"resize":{"width":400}}')
           .reply(200, "small file")
       })
 
